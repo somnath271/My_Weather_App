@@ -7,6 +7,8 @@ const getWeather = async (city) => {
     }
     const data = await response.json();
 
+    console.log(data); // Log the data object to the console
+
     // Update weather information in the HTML
     const cityNameElement = document.querySelector("#cityName");
     cityNameElement.innerHTML = city;
