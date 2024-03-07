@@ -1,0 +1,47 @@
+.weather-heading {
+  transition: color 0.3s ease;
+  color: #333;
+}
+
+.weather-heading:hover {
+  color: #ff5733;
+}
+
+.temperature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.temperature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(162, 81, 81, 0.5);
+  background-color: #f0f0f0;
+}
+
+.humidity-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.humidity-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(120, 120, 120, 0.5);
+  background-color: #f0f0f0;
+}
+
+.wind-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.wind-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(120, 120, 120, 0.5);
+  background-color: #f0f0f0;
+}
