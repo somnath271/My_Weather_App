@@ -10,6 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -74,14 +75,17 @@
       </div>
     </nav>
     <div class="container bg-primary-subtle">
-      <h1 class="my-4 text-center">Weather for <span id="cityName"></span></h1>
+      <h1 class="my-4 text-center weather-heading">
+        Weather for <span id="cityName"></span>
+      </h1>
+
       <main>
         <div
           class="row row-cols-1 row-cols-md-3 mb-3 text-center shadow-sm p-3 mb-5 bg-white rounded"
         >
           <div class="col">
             <div
-              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary"
+              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary temperature-card"
             >
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Temperatures</h4>
@@ -107,9 +111,10 @@
               </div>
             </div>
           </div>
+
           <div class="col">
             <div
-              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary"
+              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary humidity-card"
             >
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Humidity info</h4>
@@ -134,9 +139,10 @@
               </div>
             </div>
           </div>
+
           <div class="col">
             <div
-              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary"
+              class="card mb-4 rounded-3 shadow-lg p-3 mb-5 bg-white rounded border-primary wind-card"
             >
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Wind info</h4>
