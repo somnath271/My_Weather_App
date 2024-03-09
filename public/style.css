@@ -7,6 +7,15 @@
   color: #ff5733;
 }
 
+.color {
+  transition: color 0.3s ease;
+  color: #333;
+}
+
+.color:hover {
+  color: #7733ff;
+}
+
 .temperature-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
