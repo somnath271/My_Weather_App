@@ -11,6 +11,41 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+form {
+  position: relative;
+  width: 300px; 
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 78%;
+  z-index: 1000;
+  border: 1px solid white;
+  background-color: white;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 15%; 
+  box-shadow: white;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+
+  </style>
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -32,46 +67,23 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About this app</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >More
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Delhi</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Contact me</a
-              >
-            </li>
+            
           </ul>
-          <form class="d-flex" role="search">
+          <form class="d-flex" role="search" onsubmit="return false;">
             <input
               id="city"
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              oninput="showSuggestions()"
             />
             <button class="btn btn-outline-success" type="submit" id="submit">
               Search
             </button>
           </form>
+          <ul class="suggestions" id="suggestions"></ul>
+        
         </div>
       </div>
     </nav>
@@ -245,6 +257,49 @@
         </div>
       </main>
     </div>
+
+    <script>
+      const cities = [
+    "Bangalore", "Chennai", "Mumbai", "Delhi", "Hyderabad", "Kolkata", "Ahmedabad", 
+    "Pune", "Jaipur", "Surat", "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal", 
+    "Visakhapatnam", "Chandigarh", "Coimbatore", "Madurai", "Patna", "New York", 
+    "Los Angeles", "San Francisco", "Chicago", "Toronto", "London", "Paris", 
+    "Berlin", "Madrid", "Rome", "Amsterdam", "Dubai", "Sydney", "Hong Kong", 
+    "Tokyo", "Shanghai", "Singapore", "Seoul", "Moscow", "Istanbul","Bengaluru"
+    ];
+  
+      function showSuggestions() {
+        const input = document.getElementById("city").value.toLowerCase();
+        const suggestions = document.getElementById("suggestions");
+        suggestions.innerHTML = "";
+  
+        if (input.length > 0) {
+          const filteredCities = cities.filter(city => city.toLowerCase().startsWith(input));
+          
+          filteredCities.forEach(city => {
+            const li = document.createElement("li");
+            li.textContent = city;
+            li.onclick = () => selectCity(city);
+            suggestions.appendChild(li);
+          });
+        }
+      }
+  
+      function selectCity(city) {
+        document.getElementById("city").value = city;
+        document.getElementById("suggestions").innerHTML = "";
+      }
+  
+      document.getElementById("submit").addEventListener("click", () => {
+        const city = document.getElementById("city").value;
+        if (city) {
+          console.log("Selected city:", city);
+        
+        }
+      });
+    </script>
+
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
