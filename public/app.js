@@ -47,40 +47,91 @@ const cities = [
 ];
 
 // Add the showSuggestions function
-function showSuggestions() {
+async function showSuggestions() {
   const input = document.getElementById("city").value.toLowerCase();
   const suggestions = document.getElementById("suggestions");
   suggestions.innerHTML = "";
 
-  if (input.length > 0) {
-    const filteredCities = cities
-      .filter((city) => city.toLowerCase().startsWith(input))
-      .slice(0, 5); // Show only top 5 matches
+  if (input.length >= 2) {
+    // Only search if at least 2 characters are entered
+    try {
+      // Show loading state
+      const loadingLi = document.createElement("li");
+      loadingLi.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Searching...`;
+      suggestions.appendChild(loadingLi);
 
-    if (filteredCities.length > 0) {
-      filteredCities.forEach((city) => {
+      // Direct API call to OpenWeather
+      const apiKey = "48fd14967a49582e0f79258671e5452b"; // Your API key
+      const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch cities");
+      }
+
+      const cities = await response.json();
+      suggestions.innerHTML = ""; // Clear loading state
+
+      if (cities.length > 0) {
+        cities.forEach((city) => {
+          const li = document.createElement("li");
+          // Format city display text
+          const cityText = [city.name, city.state, city.country]
+            .filter(Boolean)
+            .join(", ");
+
+          li.innerHTML = `<i class="fas fa-map-marker-alt"></i>${cityText}`;
+          li.onclick = () => {
+            document.getElementById("city").value = city.name;
+            suggestions.innerHTML = "";
+            // Trigger weather search
+            getWeather(city.name, false);
+            // Scroll to results
+            setTimeout(() => {
+              document.querySelector(".weather-heading")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 100);
+          };
+          suggestions.appendChild(li);
+        });
+      } else {
         const li = document.createElement("li");
-        li.innerHTML = `<i class="fas fa-map-marker-alt"></i>${city}`;
-        li.onclick = () => {
-          document.getElementById("city").value = city;
-          suggestions.innerHTML = "";
-          // Trigger weather search
-          getWeather(city, false);
-          // Scroll to results
-          document.querySelector(".weather-heading").scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        };
+        li.innerHTML = `<i class="fas fa-times-circle"></i>No cities found`;
         suggestions.appendChild(li);
-      });
-    } else {
+      }
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+      suggestions.innerHTML = "";
       const li = document.createElement("li");
-      li.innerHTML = `<i class="fas fa-times-circle"></i>No cities found`;
+      li.innerHTML = `<i class="fas fa-exclamation-circle"></i>Try a different city name`;
       suggestions.appendChild(li);
     }
   }
 }
+
+// Add debouncing to prevent too many API calls
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Use debounced version of showSuggestions
+const debouncedShowSuggestions = debounce(showSuggestions, 300);
+
+// Update the input event listener
+document
+  .getElementById("city")
+  ?.addEventListener("input", debouncedShowSuggestions);
 
 // Add event listener for the main search input
 function handleMainSearch() {
@@ -104,6 +155,13 @@ document.getElementById("submit")?.addEventListener("click", function () {
     getWeather(city, false);
     document.getElementById("city").value = "";
     document.getElementById("suggestions").innerHTML = "";
+    // Add scroll to results
+    setTimeout(() => {
+      document.querySelector(".weather-heading")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100);
   }
 });
 
@@ -118,27 +176,34 @@ document.addEventListener("click", (e) => {
 
 // Initialize the weather display
 document.addEventListener("DOMContentLoaded", async () => {
-  const selectedCity = sessionStorage.getItem('selectedCity');
-  const shouldLoadCommonPlaces = sessionStorage.getItem('shouldLoadCommonPlaces');
-  
+  // Load the cities list first
+  if (typeof loadCityList === "function") {
+    await loadCityList();
+  }
+
+  const selectedCity = sessionStorage.getItem("selectedCity");
+  const shouldLoadCommonPlaces = sessionStorage.getItem(
+    "shouldLoadCommonPlaces"
+  );
+
   if (selectedCity) {
     // Clear the stored data
-    sessionStorage.removeItem('selectedCity');
-    sessionStorage.removeItem('shouldLoadCommonPlaces');
-    
+    sessionStorage.removeItem("selectedCity");
+    sessionStorage.removeItem("shouldLoadCommonPlaces");
+
     // Get weather for the selected city
     await getWeather(selectedCity, false);
-    
+
     // Scroll to results after a short delay
     setTimeout(() => {
-      document.querySelector('.weather-heading').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      document.querySelector(".weather-heading").scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }, 500);
   } else {
     // Show initial weather for a default city
-    await getWeather('London', false);
+    await getWeather("London", false);
   }
 });
 
@@ -146,13 +211,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 const getWeather = async (city, isCommonPlace = false) => {
   try {
     if (!isCommonPlace) {
-      document.getElementById('cityName').innerHTML = `Loading weather for ${city}...`;
+      document.getElementById(
+        "cityName"
+      ).innerHTML = `Loading weather for ${city}...`;
       // Make sure main section is visible
-      const mainSection = document.querySelector('main');
+      const mainSection = document.querySelector("main");
       if (mainSection) {
-        mainSection.style.display = 'block';
-        mainSection.style.opacity = '1';
-        mainSection.style.transform = 'translateY(0)';
+        mainSection.style.display = "block";
+        mainSection.style.opacity = "1";
+        mainSection.style.transform = "translateY(0)";
       }
     }
 
@@ -253,9 +320,9 @@ async function initializeCommonPlaces() {
   const commonPlaces = ["bangalore", "delhi", "lucknow", "tansen"];
   try {
     // Use Promise.all to fetch all common places weather data in parallel
-    await Promise.all(commonPlaces.map(city => getWeather(city, true)));
+    await Promise.all(commonPlaces.map((city) => getWeather(city, true)));
   } catch (error) {
-    console.error('Error loading common places:', error);
+    console.error("Error loading common places:", error);
   }
 }
 
