@@ -325,5 +325,3 @@ async function initializeCommonPlaces() {
     console.error("Error loading common places:", error);
   }
 }
-
-// Rest of your existing code...
