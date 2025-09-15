@@ -2,12 +2,6 @@
 
 A real-time weather forecast application that provides accurate weather information for any city worldwide.
 
-## Structure
-
-- `public/` — static files (index.html, CSS, JS, images)
-- `api/` — Vercel Serverless Functions
-- `.env.local` — local env vars (ignored by git)
-
 ## Run locally
 
 1. Create `.env.local` in project root:
@@ -49,14 +43,3 @@ Open:
 3. Add Environment Variable:
    - `OPENWEATHERMAP_API_KEY`
 4. Deploy.
-
-No custom vercel.json is required. Vercel auto-detects:
-
-- Static assets in `public/`
-- Functions in `api/`
-
-## Notes
-
-- Do not expose your API key in frontend code.
-- `.env.local` is ignored by git. Use Vercel Project Settings → Environment Variables in production.
-- For issues with old CLI, upgrade: `npm i -g vercel@latest`.
