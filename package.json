@@ -1,20 +1,23 @@
 {
-  "type": "module",
-  "name": "your-package-name",
+  "name": "weatherscope",
   "version": "1.0.0",
-  "description": "Your project description",
-  "main": "server.mjs",
+  "description": "Real-time weather forecast and updates for any city worldwide",
+  "main": "public/index.html",
   "scripts": {
-    "start": "node server.mjs",
-    "dev": "node server.mjs",
-    "build": "echo 'No build script specified' && exit 0"
+    "build": "echo 'No build required for static site'"
   },
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^32.0.0"
   },
-  "keywords": [],
-  "author": "Your Name",
-  "license": "ISC"
+  "keywords": [
+    "weather",
+    "forecast",
+    "api",
+    "real-time",
+    "temperature",
+    "humidity"
+  ],
+  "author": "WeatherScope",
+  "license": "MIT"
 }

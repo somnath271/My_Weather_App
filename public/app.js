@@ -60,10 +60,9 @@ async function showSuggestions() {
       loadingLi.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Searching...`;
       suggestions.appendChild(loadingLi);
 
-      // Direct API call to OpenWeather
-      const apiKey = "48fd14967a49582e0f79258671e5452b"; // Your API key
+      // Call our Vercel API endpoint
       const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+        `/api/search-city?q=${encodeURIComponent(input)}`
       );
 
       if (!response.ok) {
@@ -224,7 +223,9 @@ const getWeather = async (city, isCommonPlace = false) => {
     }
 
     // Fetch weather data
-    const weatherResponse = await fetch(`/weather?city=${city}`);
+    const weatherResponse = await fetch(
+      `/api/weather?city=${encodeURIComponent(city)}`
+    );
     if (!weatherResponse.ok) {
       throw new Error("Failed to fetch weather data");
     }

@@ -1,60 +1,62 @@
-# My Weather App
+# WeatherScope
 
-My Weather App is a web application that provides live weather information for cities around the world. It is built using HTML, CSS and JavaScript, offering a responsive user interface.
+A real-time weather forecast application that provides accurate weather information for any city worldwide.
 
-## Features
+## Structure
 
-- **Live Weather Information**: Get real-time weather updates for any city globally.
-- **Search Functionality**: Easily search for weather information by entering the city name.
-- **Responsive Design**: The application is designed to work seamlessly across various devices and screen sizes.
-- **Intuitive User Interface**: Simple and user-friendly interface for an enhanced user experience.
+- `public/` — static files (index.html, CSS, JS, images)
+- `api/` — Vercel Serverless Functions
+- `.env.local` — local env vars (ignored by git)
 
-## Installation
+## Run locally
 
-To run the My Weather App locally, follow these steps:
+1. Create `.env.local` in project root:
 
-1. Clone this repository to your local machine:
+```
+OPENWEATHERMAP_API_KEY=your_real_key
+```
 
-    ```bash
-    git clone https://github.com/somnath271/My_Weather_App.git
-    ```
+2. Install CLI (recommended to use latest):
 
-2. Navigate to the project directory:
+```
+npm i -g vercel@latest
+```
 
-    ```bash
-    cd My_Weather_App
-    ```
+3. Install dependencies (none required, but safe to run):
 
-3. Install dependencies:
+```
+npm install
+```
 
-    ```bash
-    npm install 
-    ```
+4. Start dev server:
 
-4. Start the development server:
+```
+vercel dev --yes
+```
 
-    ```bash
-    npm start
-    ```
+- If port is busy: `vercel dev --yes --listen 3001`
 
-5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the application.
+Open:
 
-## Usage
+- App: http://localhost:3000
+- API: http://localhost:3000/api/weather?city=London
+- API: http://localhost:3000/api/search-city?q=lon
 
-1. Enter the name of the city you want to get weather information for in the search bar.
-2. Press Enter or click the search button to see live weather updates for the specified city.
-3. Explore additional features and settings for an enhanced user experience.
+## Deploy via GitHub → Vercel
 
-## Contributing
+1. Push to GitHub.
+2. In Vercel Dashboard, Import the repo.
+3. Add Environment Variable:
+   - `OPENWEATHERMAP_API_KEY`
+4. Deploy.
 
-Contributions are welcome! If you'd like to contribute to My Weather App, please follow these steps:
+No custom vercel.json is required. Vercel auto-detects:
 
-1. Fork the repository on GitHub.
-2. Create a new branch with a descriptive name.
-3. Make your changes and commit them with clear messages.
-4. Push your changes to your forked repository.
-5. Submit a pull request detailing the changes you made.
+- Static assets in `public/`
+- Functions in `api/`
 
-## Contact
+## Notes
 
-If you have any questions, issues, or suggestions, feel free to reach out to me at sumanbhattarai200@gmail.com
+- Do not expose your API key in frontend code.
+- `.env.local` is ignored by git. Use Vercel Project Settings → Environment Variables in production.
+- For issues with old CLI, upgrade: `npm i -g vercel@latest`.
