@@ -40,6 +40,8 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
+    // Cache for 5 minutes on the Vercel Edge, allow SWR for 1 minute
+    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=60");
     res.status(200).json(data);
   } catch (error) {
     console.error("Weather API error:", error);

@@ -16,11 +16,9 @@ export default async function handler(req, res) {
   const { q: query } = req.query;
 
   if (!query || query.length < 2) {
-    return res
-      .status(400)
-      .json({
-        error: "Query parameter is required and must be at least 2 characters",
-      });
+    return res.status(400).json({
+      error: "Query parameter is required and must be at least 2 characters",
+    });
   }
 
   const apiKey = process.env.OPENWEATHERMAP_API_KEY;
@@ -51,6 +49,8 @@ export default async function handler(req, res) {
       lon: city.lon,
     }));
 
+    // Cache suggestions briefly to speed up typing
+    res.setHeader("Cache-Control", "s-maxage=120, stale-while-revalidate=30");
     res.status(200).json(formattedCities);
   } catch (error) {
     console.error("Geocoding API error:", error);
