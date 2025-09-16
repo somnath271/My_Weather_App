@@ -47,9 +47,17 @@ const cities = [
 ];
 
 // Add the showSuggestions function
-async function showSuggestions() {
-  const input = document.getElementById("city").value.toLowerCase();
-  const suggestions = document.getElementById("suggestions");
+async function showSuggestions(e) {
+  const inputElement =
+    e?.target || document.activeElement || document.getElementById("city");
+  const isNavbar = inputElement && inputElement.id === "city";
+  const isMain = inputElement && inputElement.id === "mainSearch";
+
+  const input = (inputElement?.value || "").toLowerCase();
+  const suggestions = document.getElementById(
+    isNavbar ? "suggestions" : "mainSuggestions"
+  );
+  if (!suggestions) return;
   suggestions.innerHTML = "";
 
   if (input.length >= 2) {
@@ -82,7 +90,14 @@ async function showSuggestions() {
 
           li.innerHTML = `<i class="fas fa-map-marker-alt"></i>${cityText}`;
           li.onclick = () => {
-            document.getElementById("city").value = city.name;
+            // Clear the correct input
+            if (isNavbar) {
+              const el = document.getElementById("city");
+              if (el) el.value = "";
+            } else if (isMain) {
+              const el = document.getElementById("mainSearch");
+              if (el) el.value = "";
+            }
             suggestions.innerHTML = "";
             // Trigger weather search
             getWeather(city.name, false);
@@ -130,7 +145,7 @@ const debouncedShowSuggestions = debounce(showSuggestions, 300);
 // Update the input event listener
 document
   .getElementById("city")
-  ?.addEventListener("input", debouncedShowSuggestions);
+  ?.addEventListener("input", (e) => debouncedShowSuggestions(e));
 
 // Add event listener for the main search input
 function handleMainSearch() {
@@ -199,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         behavior: "smooth",
         block: "start",
       });
-    }, 500);
+    }, 100);
   } else {
     // Show initial weather for a default city
     await getWeather("London", false);
@@ -265,8 +280,10 @@ const getWeather = async (city, isCommonPlace = false) => {
       // Make weather results visible
       document.querySelector("main").style.display = "block";
 
-      // After updating main weather, also update common places
-      await initializeCommonPlaces();
+      // After updating main weather, also update common places (defer slightly)
+      setTimeout(() => {
+        initializeCommonPlaces();
+      }, 10);
     }
   } catch (error) {
     console.error(error);

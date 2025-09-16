@@ -24,7 +24,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://my-weather-app-xjyn.onrender.com/"
+      content="https://my-weather-app-alpha-taupe.vercel.app/"
     />
     <meta
       property="og:title"
@@ -39,7 +39,7 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta
       property="twitter:url"
-      content="https://my-weather-app-xjyn.onrender.com/"
+      content="https://my-weather-app-alpha-taupe.vercel.app/"
     />
     <meta
       property="twitter:title"
@@ -59,7 +59,10 @@
     <meta name="theme-color" content="#4A90E2" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://weatherscope.com/" />
+    <link
+      rel="canonical"
+      href="https://my-weather-app-alpha-taupe.vercel.app/"
+    />
 
     <!-- Stylesheets -->
     <link
@@ -74,10 +77,16 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient sticky-top shadow-sm"
+      data-bs-theme="dark"
+    >
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <i class="fas fa-cloud-sun"></i>
+        <a
+          class="navbar-brand fw-bold d-flex align-items-center"
+          href="index.html"
+        >
+          <i class="fas fa-cloud-sun me-2"></i>
           WeatherScope
         </a>
         <button
@@ -85,43 +94,53 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">
-                <i class="fas fa-home"></i> Home
-              </a>
+              <a class="nav-link active" href="index.html"
+                ><i class="fas fa-home"></i> Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="popular-cities.html">
-                <i class="fas fa-map-marker-alt"></i> Popular Cities
-              </a>
+              <a class="nav-link" href="popular-cities.html"
+                ><i class="fas fa-map-marker-alt"></i> Popular Cities</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">
-                <i class="fas fa-info-circle"></i> About
-              </a>
+              <a class="nav-link" href="about.html"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
             </li>
           </ul>
-          <div class="search-container">
+          <div class="nav-search position-relative ms-lg-3 my-2 my-lg-0">
             <form class="d-flex" role="search" onsubmit="return false;">
-              <input
-                id="city"
-                class="form-control"
-                type="search"
-                placeholder="Search for a city..."
-                aria-label="Search"
-                oninput="showSuggestions()"
-                autocomplete="off"
-              />
-              <button class="btn btn-search" type="submit" id="submit">
-                <i class="fas fa-search"></i>
-              </button>
+              <div class="input-group">
+                <input
+                  id="city"
+                  class="form-control border-0"
+                  type="search"
+                  placeholder="Search for a city..."
+                  aria-label="Search"
+                  oninput="showSuggestions()"
+                  autocomplete="off"
+                  style="box-shadow: none"
+                />
+                <button class="btn btn-outline-light" type="submit" id="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
             </form>
-            <ul class="suggestions" id="suggestions"></ul>
+            <ul
+              class="suggestions shadow"
+              id="suggestions"
+              style="position: absolute; top: 100%; left: 0; right: 0"
+            ></ul>
           </div>
         </div>
       </div>
@@ -150,7 +169,7 @@
                       type="search"
                       placeholder="Enter city name..."
                       aria-label="Search"
-                      oninput="showSuggestions()"
+                      oninput="showSuggestions(event)"
                       autocomplete="off"
                     />
                     <button
@@ -162,6 +181,17 @@
                     </button>
                   </div>
                 </form>
+                <ul
+                  class="suggestions shadow"
+                  id="mainSuggestions"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    max-width: 500px;
+                    margin: 8px auto 0;
+                  "
+                ></ul>
               </div>
             </div>
           </div>

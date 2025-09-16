@@ -1,47 +1,44 @@
-<nav class="navbar navbar-expand-lg">
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient sticky-top shadow-sm"
+  data-bs-theme="dark"
+>
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <i class="fas fa-cloud-sun"></i>
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <i class="fas fa-cloud-sun me-2"></i>
       WeatherScope
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-home"></i> Home
-          </a>
+          <a class="nav-link" href="index.html"
+            ><i class="fas fa-home"></i> Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="popular-cities.html">
-            <i class="fas fa-map-marker-alt"></i> Popular Cities
-          </a>
+          <a class="nav-link" href="popular-cities.html"
+            ><i class="fas fa-map-marker-alt"></i> Popular Cities</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">
-            <i class="fas fa-info-circle"></i> About
-          </a>
+          <a class="nav-link" href="about.html"
+            ><i class="fas fa-info-circle"></i> About</a
+          >
         </li>
       </ul>
-      <div class="search-container">
-        <form class="d-flex" role="search" onsubmit="return false;">
-          <input
-            id="city"
-            class="form-control"
-            type="search"
-            placeholder="Search for a city..."
-            aria-label="Search"
-            oninput="showSuggestions()"
-            autocomplete="off"
-          />
-          <button class="btn btn-search" type="submit" id="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-        <ul class="suggestions" id="suggestions"></ul>
-      </div>
+
+      <!-- Search removed on secondary pages intentionally -->
     </div>
   </div>
-</nav> 
+</nav>

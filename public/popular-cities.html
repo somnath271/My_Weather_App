@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Include navigation -->
+    <!-- Include navigation (secondary: no search) -->
     <div id="nav-placeholder"></div>
 
     <div class="content-section">
@@ -152,7 +152,6 @@
       // Load navigation
       $(function () {
         $("#nav-placeholder").load("nav.html", function () {
-          // Add active class to current page
           document
             .querySelector('a[href="popular-cities.html"]')
             ?.classList.add("active");
