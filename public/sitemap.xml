@@ -3,43 +3,36 @@
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/popular-cities.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/about.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/features.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/how-it-works.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/privacy.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://my-weather-app-alpha-taupe.vercel.app/terms.html</loc>
     <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>
