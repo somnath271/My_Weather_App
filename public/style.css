@@ -8,8 +8,22 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  background-size: 300% 300%;
+  animation: bgShift 24s ease infinite;
   min-height: 100vh;
+}
+
+@keyframes bgShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .navbar {
@@ -20,9 +34,6 @@ body {
   margin-bottom: 2rem;
 }
 
-#nav-placeholder {
-  display: contents;
-}
 /* Navbar links clarity and layout */
 .navbar-nav .nav-link {
   color: #fff !important;
@@ -364,16 +375,24 @@ body {
 }
 
 @media (max-width: 991px) {
-  /* Keep dark theme and readable links in mobile expanded menu */
   .navbar[data-bs-theme="dark"] .navbar-collapse {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.6);
     padding: 1rem;
     border-radius: 10px;
     margin-top: 1rem;
+    backdrop-filter: blur(8px);
   }
 
   .navbar[data-bs-theme="dark"] .nav-link {
     color: #ffffff !important;
+    font-weight: 600;
+  }
+
+  .navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  .navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.3);
   }
 
   .search-container {
@@ -511,6 +530,72 @@ main:not([style*="display: none"]) {
 
 .table {
   margin-bottom: 0;
+}
+
+/* Skeleton loading shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  color: transparent !important;
+  position: relative;
+}
+
+.skeleton::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1em;
+  border-radius: 8px;
+  background: #e6e6e6;
+  background-image: linear-gradient(
+    90deg,
+    #e6e6e6 0px,
+    #f4f4f4 40px,
+    #e6e6e6 80px
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+#weatherResults.loading .card .card-title .skeleton::after {
+  height: 2.2rem;
+}
+#weatherResults.loading .card ul li .skeleton::after {
+  height: 0.9rem;
+}
+
+/* Buttons micro-interactions */
+.btn,
+.btn-primary,
+.btn-outline-light,
+.btn-search {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Accordion polish */
+.accordion-button:not(.collapsed) {
+  color: #fff;
+  background: linear-gradient(
+    120deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.15rem rgba(33, 150, 243, 0.25);
 }
 
 /* Responsive adjustments */

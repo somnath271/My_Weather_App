@@ -1,4 +1,4 @@
-// Add this at the beginning of app.js
+// Update the cities list
 const cities = [
   "Bangalore",
   "Chennai",
@@ -101,6 +101,16 @@ async function showSuggestions(e) {
             suggestions.innerHTML = "";
             // Trigger weather search
             getWeather(city.name, false);
+            // If not on home page, navigate to home and persist selected city
+            if (
+              !location.pathname.endsWith("index.html") &&
+              location.pathname !== "/"
+            ) {
+              sessionStorage.setItem("selectedCity", city.name);
+              sessionStorage.setItem("shouldLoadCommonPlaces", "false");
+              location.href = "index.html#weatherResults";
+              return;
+            }
             // Scroll to results
             setTimeout(() => {
               document.querySelector(".weather-heading")?.scrollIntoView({
@@ -214,10 +224,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         behavior: "smooth",
         block: "start",
       });
-    }, 100);
+    }, 500);
   } else {
+    // Show skeletons while loading
+    const results = document.getElementById("weatherResults");
+    results?.classList.add("loading");
+    document.getElementById("temp2")?.classList.add("skeleton");
+    document.getElementById("humidity2")?.classList.add("skeleton");
+    document.getElementById("wind_speed2")?.classList.add("skeleton");
     // Show initial weather for a default city
     await getWeather("London", false);
+    results?.classList.remove("loading");
+    document.getElementById("temp2")?.classList.remove("skeleton");
+    document.getElementById("humidity2")?.classList.remove("skeleton");
+    document.getElementById("wind_speed2")?.classList.remove("skeleton");
   }
 });
 
@@ -335,7 +355,7 @@ function getAirQualityStatus(aqi) {
 
 // Initialize common places weather
 async function initializeCommonPlaces() {
-  const commonPlaces = ["bangalore", "delhi", "lucknow", "tansen"];
+  const commonPlaces = ["bangalore", "delhi", "canberra", "tansen"];
   try {
     // Use Promise.all to fetch all common places weather data in parallel
     await Promise.all(commonPlaces.map((city) => getWeather(city, true)));

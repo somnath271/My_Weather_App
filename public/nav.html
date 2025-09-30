@@ -32,13 +32,49 @@
           >
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="features.html"
+            ><i class="fas fa-star"></i> Features</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="how-it-works.html"
+            ><i class="fas fa-question-circle"></i> How it works</a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="about.html"
             ><i class="fas fa-info-circle"></i> About</a
           >
         </li>
       </ul>
 
-      <!-- Search removed on secondary pages intentionally -->
+      <div
+        class="nav-search position-relative ms-lg-3 my-2 my-lg-0"
+        style="min-width: 260px"
+      >
+        <form class="d-flex" role="search" onsubmit="return false;">
+          <div class="input-group">
+            <input
+              id="city"
+              class="form-control border-0"
+              type="search"
+              placeholder="Search for a city..."
+              aria-label="Search"
+              oninput="showSuggestions(event)"
+              autocomplete="off"
+              style="box-shadow: none"
+            />
+            <button class="btn btn-outline-light" type="submit" id="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        <ul
+          class="suggestions shadow"
+          id="suggestions"
+          style="position: absolute; top: 100%; left: 0; right: 0"
+        ></ul>
+      </div>
     </div>
   </div>
 </nav>
