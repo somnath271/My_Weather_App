@@ -479,9 +479,10 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  background: var(--bg-primary);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-lg);
   margin-top: 6px;
   max-height: 250px;
   overflow-y: auto;
@@ -494,13 +495,71 @@ body {
   width: 100%;
 }
 
+/* Main search suggestions */
+#mainSuggestions {
+  position: fixed;
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-primary);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-lg);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 9999;
+  padding: 8px 0;
+  width: 500px;
+  min-width: 500px;
+}
+
+#mainSuggestions li {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#mainSuggestions li:last-child {
+  border-bottom: 0;
+}
+
+#mainSuggestions li:hover {
+  background: #f1f5f9;
+  color: var(--primary-color);
+}
+
+#mainSuggestions:empty {
+  display: none;
+  padding: 0;
+  height: 0;
+  box-shadow: none;
+  border: 0;
+}
+
+/* Ensure suggestions can extend beyond any container */
+.search-container-large * {
+  overflow: visible !important;
+}
+
+.search-container-large .input-group {
+  overflow: visible !important;
+}
+
 /* Suggestion items */
 .suggestions li {
   padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e2e8f0;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .suggestions li:last-child {
@@ -508,8 +567,8 @@ body {
 }
 
 .suggestions li:hover {
-  background: rgba(0, 0, 0, 0.04);
-  color: inherit;
+  background: #f1f5f9;
+  color: var(--primary-color);
 }
 
 /* Hide empty suggestions to remove the white bar */
@@ -970,6 +1029,7 @@ p {
 
 .search-container-large {
   margin: 2rem 0;
+  overflow: visible;
 }
 
 .search-container-large .input-group {
@@ -977,6 +1037,22 @@ p {
   border-radius: 50px;
   overflow: hidden;
   position: relative;
+}
+
+.search-container-large .position-relative {
+  overflow: visible !important;
+}
+
+.search-container-large .feature-card {
+  overflow: visible !important;
+}
+
+.search-container-large .row {
+  overflow: visible !important;
+}
+
+.search-container-large .col-md-8 {
+  overflow: visible !important;
 }
 
 .search-container-large .form-control {

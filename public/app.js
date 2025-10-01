@@ -60,6 +60,16 @@ async function showSuggestions(e) {
   if (!suggestions) return;
   suggestions.innerHTML = "";
 
+  // Position suggestions for main search
+  if (isMain && inputElement) {
+    const rect = inputElement.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    suggestions.style.top = rect.bottom + scrollTop + 8 + "px";
+    suggestions.style.position = "fixed";
+    suggestions.style.left = "50%";
+    suggestions.style.transform = "translateX(-50%)";
+  }
+
   if (input.length >= 2) {
     // Only search if at least 2 characters are entered
     try {
@@ -192,9 +202,16 @@ document.getElementById("submit")?.addEventListener("click", function () {
 // Close suggestions when clicking outside
 document.addEventListener("click", (e) => {
   const suggestions = document.getElementById("suggestions");
+  const mainSuggestions = document.getElementById("mainSuggestions");
   const searchInput = document.getElementById("city");
-  if (e.target !== searchInput) {
+  const mainSearchInput = document.getElementById("mainSearch");
+
+  if (e.target !== searchInput && suggestions) {
     suggestions.innerHTML = "";
+  }
+
+  if (e.target !== mainSearchInput && mainSuggestions) {
+    mainSuggestions.innerHTML = "";
   }
 });
 

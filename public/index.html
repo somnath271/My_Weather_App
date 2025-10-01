@@ -156,10 +156,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient sticky-top shadow-sm"
-      data-bs-theme="dark"
-    >
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
       <div class="container-fluid">
         <a
           class="navbar-brand fw-bold d-flex align-items-center"
@@ -206,23 +203,28 @@
                 ><i class="fas fa-question-circle"></i> How it works</a
               >
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
           </ul>
           <div class="nav-search position-relative ms-lg-3 my-2 my-lg-0">
             <form class="d-flex" role="search" onsubmit="return false;">
               <div class="input-group">
-              <input
-                id="city"
+                <input
+                  id="city"
                   class="form-control border-0"
-                type="search"
-                placeholder="Search for a city..."
-                aria-label="Search"
-                oninput="showSuggestions()"
-                autocomplete="off"
+                  type="search"
+                  placeholder="Search for a city..."
+                  aria-label="Search"
+                  oninput="showSuggestions()"
+                  autocomplete="off"
                   style="box-shadow: none"
-              />
+                />
                 <button class="btn btn-outline-light" type="submit" id="submit">
-                  <i class="fas fa-search" style="color: blue;"></i>
-              </button>
+                  <i class="fas fa-search" style="color: blue"></i>
+                </button>
               </div>
             </form>
             <ul
@@ -250,42 +252,39 @@
           <div class="col-md-8 offset-md-2">
             <div class="feature-card text-center">
               <h3 class="mb-4">Check Weather For Your City</h3>
-              <div class="search-container-large">
-                <form
-                  class="d-flex justify-content-center"
-                  role="search"
-                  onsubmit="return false;"
+              <div
+                class="search-container-large position-relative d-flex justify-content-center"
+              >
+                <div
+                  class="position-relative"
+                  style="max-width: 500px; width: 100%"
                 >
-                  <div class="input-group" style="max-width: 500px">
-                    <input
-                      id="mainSearch"
-                      class="form-control form-control-lg"
-                      type="search"
-                      placeholder="Enter city name..."
-                      aria-label="Search"
-                      oninput="showSuggestions(event)"
-                      autocomplete="off"
-                    />
-                    <button
-                      class="btn btn-primary btn-lg"
-                      type="submit"
-                      onclick="handleMainSearch()"
-                    >
-                      <i class="fas fa-search"></i> Search
-                    </button>
-                  </div>
-                </form>
-                <ul
-                  class="suggestions shadow"
-                  id="mainSuggestions"
-                  style="
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    max-width: 500px;
-                    margin: 8px auto 0;
-                  "
-                ></ul>
+                  <form
+                    class="d-flex justify-content-center"
+                    role="search"
+                    onsubmit="return false;"
+                  >
+                    <div class="input-group">
+                      <input
+                        id="mainSearch"
+                        class="form-control form-control-lg"
+                        type="search"
+                        placeholder="Enter city name..."
+                        aria-label="Search"
+                        oninput="showSuggestions(event)"
+                        autocomplete="off"
+                      />
+                      <button
+                        class="btn btn-primary btn-lg"
+                        type="submit"
+                        onclick="handleMainSearch()"
+                      >
+                        <i class="fas fa-search"></i> Search
+                      </button>
+                    </div>
+                  </form>
+                  <ul class="suggestions shadow" id="mainSuggestions"></ul>
+                </div>
               </div>
             </div>
           </div>
