@@ -1,4 +1,4 @@
-# WeatherScope
+# WeatherCue
 
 A real-time weather forecast application that provides accurate weather information for any city worldwide.
 
