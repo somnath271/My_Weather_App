@@ -2,7 +2,9 @@
   "rewrites": [
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
+    { "source": "/:slug", "destination": "/blog/:slug.html" },
+    { "source": "./(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
