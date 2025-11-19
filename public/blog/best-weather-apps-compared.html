@@ -26,6 +26,7 @@
       rel="canonical"
       href="https://my-weather-app-alpha-taupe.vercel.app/blog/best-weather-apps-compared.html"
     />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=60&auto=format&fit=crop" crossorigin>
     <meta property="og:type" content="article" />
     <meta
       property="og:title"
@@ -102,18 +103,40 @@
         },
         "headline": "Best weather apps compared",
         "description": "Comparison of top weather apps to help you choose the right one for your needs.",
-        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=60&auto=format&fit=crop",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=60&auto=format&fit=crop",
         "author": { "@type": "Person", "name": "Somnath Bhattarai" },
         "publisher": {
           "@type": "Organization",
           "name": "WeatherCue",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://my-weather-app-alpha-taupe.vercel.app/logo.png"
+            "url": "https://my-weather-app-alpha-taupe.vercel.app/logo.png",
+            "width": 60,
+            "height": 60
           }
         },
         "datePublished": "2025-09-15",
-        "dateModified": "2025-09-15"
+        "dateModified": "2025-09-15",
+        "wordCount": 1500,
+        "timeRequired": "PT8M"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are paid weather apps more accurate?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Paid apps may offer additional features and higher-resolution data, but accuracy depends on model sources and local calibration rather than price alone." }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I test which app is best for my area?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Run two apps side-by-side for several weeks, compare their hourly forecasts to observed conditions, and note alert timeliness during real events." }
+          }
+        ]
       }
     </script>
   </head>
@@ -234,19 +257,31 @@
           needs.
         </p>
 
-        <h2>Why app choice matters</h2>
+        <!-- Table of contents -->
+        <nav aria-label="Table of contents" class="mb-4">
+          <strong>Contents</strong>
+          <ul class="small">
+            <li><a href="#why-app-choice">Why app choice matters</a></li>
+            <li><a href="#accuracy">Forecast accuracy and model sources</a></li>
+            <li><a href="#alerts">Alerts and notifications</a></li>
+            <li><a href="#maps">Maps and visualization</a></li>
+            <li><a href="#recommendations">Top recommendations</a></li>
+          </ul>
+        </nav>
+
+  <h2 id="why-app-choice">Why app choice matters</h2>
         <p>
           Accuracy is only one part of the equation. A great app combines
           reliable forecasts with clear alerts, easy-to-interpret radar and
           maps, and an interface that surfaces what you need quickly. Some apps
           excel at short-term, hyperlocal forecasts (useful for outdoor events),
           while others provide long-range guidance and model ensembles for
-          planning. We tested apps by comparing their hourly and 48–72 hour
+          planning. We tested apps by comparing their hourly and 48-72 hour
           forecasts against observed conditions and evaluated their notification
           reliability across different types of severe weather.
         </p>
 
-        <h2>1) Forecast accuracy and model sources</h2>
+  <h2 id="accuracy">1) Forecast accuracy and model sources</h2>
         <p>
           Forecast accuracy depends on two things: the underlying weather models
           and the app's post-processing. Apps using multiple data sources
@@ -273,7 +308,7 @@
           </li>
         </ul>
 
-        <h2>2) Alerts, notifications and reliability</h2>
+  <h2 id="alerts">2) Alerts, notifications and reliability</h2>
         <p>
           Timely alerts are critical during severe weather. We tested push
           notification timeliness and the ability to filter alerts by type
@@ -297,7 +332,7 @@
           </li>
         </ol>
 
-        <h2>3) Maps, radar and data visualization</h2>
+  <h2 id="maps">3) Maps, radar and data visualization</h2>
         <p>
           Visual clarity in radar, satellite and precipitation maps makes it
           easy to interpret incoming weather. Look for smooth radar playback,
@@ -307,7 +342,7 @@
           activities.
         </p>
 
-        <h2>4) User experience and accessibility</h2>
+  <h2 id="ux">4) User experience and accessibility</h2>
         <p>
           A polished interface reduces friction. Consider how quickly the app
           shows hourly details, how it presents humidity and feels-like
@@ -389,7 +424,7 @@
           </li>
         </ul>
 
-        <h2>FAQ: Common questions</h2>
+  <h2 id="faq">FAQ: Common questions</h2>
         <p>
           <strong>Q:</strong> Are paid apps always more accurate?<br />
           <strong>A:</strong> Not always — paid tiers add features and remove
@@ -435,6 +470,13 @@
             >mobile</a
           >
         </div>
+        <section class="mt-3" aria-labelledby="faq">
+          <h2 id="faq-heading" class="h5">Frequently asked questions</h2>
+          <div class="mb-3 small">
+            <p><strong>Q:</strong> Are paid apps always more accurate?<br /><strong>A:</strong> Not always — accuracy depends on models and local calibration. Paid tiers may add features but don't guarantee better short-term forecasts.</p>
+            <p><strong>Q:</strong> How often should I check forecasts?<br /><strong>A:</strong> For daily planning check morning and evening; for short-term activities check hourly and radar within an hour of departure.</p>
+          </div>
+        </section>
 
         <hr />
         <div class="d-flex justify-content-between align-items-center">

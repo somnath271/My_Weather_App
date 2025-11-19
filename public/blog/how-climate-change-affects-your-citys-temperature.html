@@ -30,6 +30,12 @@
       rel="canonical"
       href="https://my-weather-app-alpha-taupe.vercel.app/blog/how-climate-change-affects-your-citys-temperature.html"
     />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=60&auto=format&fit=crop"
+      crossorigin
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -110,7 +116,7 @@
         },
         "headline": "How climate change affects your city's temperature",
         "description": "Understand how climate change and urban factors combine to raise city temperatures, increase heatwaves, and what cities and residents can do to adapt and cool down.",
-        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=60&auto=format&fit=crop",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=60&auto=format&fit=crop",
         "author": {
           "@type": "Person",
           "name": "Somnath Bhattarai"
@@ -120,11 +126,39 @@
           "name": "WeatherCue",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://my-weather-app-alpha-taupe.vercel.app/logo.png"
+            "url": "https://my-weather-app-alpha-taupe.vercel.app/logo.png",
+            "width": 60,
+            "height": 60
           }
         },
         "datePublished": "2025-08-02",
-        "dateModified": "2025-08-02"
+        "dateModified": "2025-08-02",
+        "wordCount": 1400,
+        "timeRequired": "PT7M"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I protect myself during extreme heat?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stay hydrated, avoid strenuous outdoor activity during the hottest hours, use cooling centers if available, and check local heat advisories."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do trees and green spaces really reduce urban temperatures?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Trees provide shade and evapotranspiration which together lower surface and air temperatures locally, often by several degrees compared to paved areas."
+            }
+          }
+        ]
       }
     </script>
   </head>
@@ -245,7 +279,33 @@
           can take to reduce risk.
         </p>
 
-        <h2>Why cities warm faster: the urban heat island + climate change</h2>
+        <!-- Table of contents for quick navigation -->
+        <nav aria-label="Table of contents" class="mb-4">
+          <strong>Contents</strong>
+          <ul class="small">
+            <li><a href="#why-cities-warm">Why cities warm faster</a></li>
+            <li>
+              <a href="#key-drivers"
+                >Key drivers that raise city temperatures</a
+              >
+            </li>
+            <li>
+              <a href="#impacts">Health, energy and infrastructure impacts</a>
+            </li>
+            <li><a href="#nocturnal-warming">Nocturnal warming matters</a></li>
+            <li><a href="#observed-trends">Observed trends and data</a></li>
+            <li>
+              <a href="#mitigation"
+                >Practical mitigation and adaptation strategies</a
+              >
+            </li>
+            <li><a href="#residents">What residents can do today</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="why-cities-warm">
+          Why cities warm faster: the urban heat island + climate change
+        </h2>
         <p>
           Two forces combine: the global increase in average temperatures
           (climate change) and the urban heat island (UHI) effect. UHI is caused
@@ -256,7 +316,7 @@
           crucially, nighttime temperatures.
         </p>
 
-        <h3>Key drivers that raise city temperatures</h3>
+        <h3 id="key-drivers">Key drivers that raise city temperatures</h3>
         <ul>
           <li>
             <strong>Surface materials:</strong> Dark, dense surfaces store solar
@@ -281,7 +341,7 @@
           </li>
         </ul>
 
-        <h2>Health, energy and infrastructure impacts</h2>
+        <h2 id="impacts">Health, energy and infrastructure impacts</h2>
         <p>
           Higher and longer-lasting heat has direct consequences. Heat-related
           illnesses and hospitalizations increase during heatwaves, especially
@@ -292,7 +352,7 @@
           increasing maintenance costs.
         </p>
 
-        <h2>Nocturnal warming matters</h2>
+        <h2 id="nocturnal-warming">Nocturnal warming matters</h2>
         <p>
           One of the most dangerous trends is nocturnal warming: nights are
           getting warmer, which reduces the human body's ability to recover from
@@ -301,7 +361,7 @@
           risk from consecutive hot days and nights.
         </p>
 
-        <h2>Observed trends and data</h2>
+        <h2 id="observed-trends">Observed trends and data</h2>
         <p>
           City temperature records — when adjusted for measurement consistency —
           show that many urban centers have warmed several tenths to more than a
@@ -321,7 +381,9 @@
           trees.
         </p>
 
-        <h2>Practical mitigation and adaptation strategies for cities</h2>
+        <h2 id="mitigation">
+          Practical mitigation and adaptation strategies for cities
+        </h2>
         <p>
           Many of the most effective responses are straightforward to describe
           and vary in scale from neighborhood projects to city-wide policy:
@@ -358,7 +420,7 @@
           </li>
         </ul>
 
-        <h2>What residents can do today</h2>
+        <h2 id="residents">What residents can do today</h2>
         <p>Individuals can reduce exposure and contribute to cooling:</p>
         <ol>
           <li>
@@ -421,6 +483,25 @@
         </ul>
 
         <hr />
+
+        <!-- Visible FAQ section -->
+        <section id="faq" class="mt-4">
+          <h2>FAQ</h2>
+          <div>
+            <p>
+              <strong>Q:</strong> How can I reduce heat exposure during a
+              heatwave?<br /><strong>A:</strong> Stay hydrated, avoid peak heat
+              hours, use air-conditioned public spaces if available, and check
+              local advisories for cooling centers.
+            </p>
+            <p>
+              <strong>Q:</strong> Will planting trees make a noticeable
+              difference?<br /><strong>A:</strong> Yes — mature trees can lower
+              local temperatures and provide shade that reduces direct exposure
+              to sunlight.
+            </p>
+          </div>
+        </section>
 
         <p>
           Learn how to check local temperature trends on our
